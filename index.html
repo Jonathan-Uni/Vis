@@ -22,15 +22,16 @@
         <div class = "Cmain">
             <div class = 'header'>
                 <h1>2016 Australian Demographic Statistics</h1>
-                <h5>Using Data from the Australian Beauro of Statistics</h5>
+                <h5>Using Data from the Australian Bureau of Statistics by Jonathan Kerslake</h5>
             </div>
 
+            <h3>Population Pyramid</h3>
             <div id="poppyramid"></div>
                 <script type="text/javascript">
                     var pyramid = {
                                     "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
 
-                                    "title":{"text":"Population Pyramid", "anchor": "middle"},
+                                    
                                     "data": {
                                     "url": "https://raw.githubusercontent.com/Jonathan-Uni/Visualisation/main/cleaned_gender_2.csv",
                                     "format": {
@@ -98,7 +99,7 @@
             </div>
 
 
-            <h2>Gender Income Violin Density Plot</h2>
+            <h3>Gender Income Violin Density Plot</h3>
             <div id= "violin"></div> 
             
             <script type="text/javascript">
@@ -149,12 +150,12 @@
                 </p>
             </div>
 
-            <h2>Income-Age Distribution</h2>
+            <h3>Income-Age Distribution</h3>
             <div id = "dheatmap"s></div>
                             <script type="text/javascript">
                                 var heatmap =     {
                                     "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-                                    "title":"Income-Age Distribution",
+                            
                                     "width":600,
                                     "height":400,
                                     "data":{
@@ -191,7 +192,7 @@
 
                         </div>
             
-            <h2>LGA Median Weekly Income Map</h2>
+            <h3>LGA Median Weekly Income Map</h3>
             <div id = "map"></div>
                             <script type="text/javascript">
                                 var incomemap = 
