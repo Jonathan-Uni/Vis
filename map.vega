@@ -1,0 +1,71 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "autosize":"pad",
+        
+    "data": {
+        "url": "https://raw.githubusercontent.com/Jonathan-Uni/Visualisation/main/lga_gender_income.json",
+        "format": {
+        "type": "topojson",
+        "feature": "lga_gender_income"}
+        },
+
+        "vconcat":[
+        {"width": 600,
+        "height":400,
+        "title":"Median Weekly Personal Income by LGA",
+        "layer":[
+        {"params": [{"name":"lga", "select": {"type": "point",
+        "fields": ["properties.LGA_CODE_2016"], "toggle": "false"}}],
+        
+        "projection": {"type":"mercator"},
+        "mark":{"type": "geoshape",
+        "stroke":"black"},
+
+        "encoding": {"color":{"condition":{"param":"lga",
+        "field":"properties.Median_tot_prsnl_inc_weekly",
+        "type":"quantitative", "title":"Median Weekly Income ($)",
+        "scale":{"scheme":"blues","domainMin":240, "domainMax":2380}, "legend":{"orient": "none", "direction": "horizontal", 
+        "legendX":130, "legendY":300}}, "value":"grey"},
+        "tooltip":[{"field":"properties.LGA_NAME_2016", "title":"LGA Name"},
+        {"field":"properties.Median_tot_prsnl_inc_weekly", 
+        "title":"Median Weekly Personal Income ($)"}],
+        "stroke":{"value":"#bab0ac"}, "strokeWidth":{"value":0.5}
+        }
+        },
+
+        {"mark":{"type":"text", "text":"Unincorp. Other Territories", "dy":-150, "dx":-200},
+        "encoding": {"color":{"value":"grey"}}},
+        {"mark":{"type":"text", "text":"←", "dy":85, "dx":-310, "angle":45},
+        "encoding": {"color":{"value":"grey"}}},
+        {"mark":{"type":"text", "text":"Unincorp. NSW", "dy":75, "dx":210},
+        "encoding": {"color":{"value":"grey"}}},
+        {"mark":{"type":"text", "text":"←", "dy":-215, "dx":50, "angle":90},
+        "encoding": {"color":{"value":"grey"}}},
+        {"mark":{"type":"text", "text":"Unincorp. Other Territories", "dy":-20, "dx":230},
+        "encoding": {"color":{"value":"grey"}}},
+        {"mark":{"type":"text", "text":"→", "dy":-200, "dx":210, "angle":45},
+        "encoding": {"color":{"value":"grey"}}}
+    
+        ]},
+
+        { "hconcat":[{  "width":125,
+        "mark":"text","encoding": {"text":{"value":"test"}, "color": {"value":"null"}}},
+        {"layer":[{
+        "title":"Gender Distribution of LGA",
+        "transform": [{"filter": {"param": "lga"}},
+        {"fold": ["properties.gender_m_count", "properties.gender_f_count"],
+        "as": ["gender", "people"]},
+        {"joinaggregate": [{"op":"sum", "field": "people", "as":"total_people"}]},
+        {"calculate": "datum.people/datum.total_people * 100", "as": "percent"}],
+        "mark":"arc",
+        "encoding": {"theta":{"field":"people", "type":"quantitative", "sort":"-color"},
+        "color":{"field":"gender", "type":"nominal", "scale":{"range":["#1b9e77", "#7570b3"]},
+        "legend":{"labelExpr": "{'properties.gender_m_count' : 'Male', 'properties.gender_f_count' : 'Female'}[datum.label]"},
+        "title": "Gender"},
+    "tooltip":[{"field":"properties.LGA_NAME_2016", "title":"Local Government Area"},
+    {"field":"percent", "format": ".2f", "type": "quantitative", "title": "Percentage"}],
+    "strokeWidth":{"value":0}, "strokeOpacity":{"value":0},"stroke":{"value":null}}
+    },{"mark":{"type":"text", "text":"Click on a LGA on the map to see its distribution",
+        "dy":140}, "encoding": {"color":{"value":"grey"}}}]}]}],
+    "resolve": {"scale": {"color": "independent"}}
+    }

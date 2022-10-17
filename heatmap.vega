@@ -1,0 +1,23 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+
+    "width":600,
+    "height":400,
+    "data":{
+        "url":"https://raw.githubusercontent.com/Jonathan-Uni/Visualisation/main/long_lga_income_age.csv"
+    },
+    "transform": [{"filter":"datum.LGA == 0"}],
+    "mark":{"type":"rect"},
+    "encoding":{"x":{"field":"IncomeGroup", "type":"nominal", "sort":["1-149", "150-299",
+    "300-399", "400-499","500-649","650-799","800-999","1000-1249","1250-1499","1500-1749",
+    "1750-1999","2000-2999","3000-more"], "title":"Weekly Personal Income"},
+    "y":{"field":"Age", "type": "nominal", "sort":"descending", "title":"Age Group"},
+    "color":{"field":"Count", "scale":{"scheme":"browns"}, "type": "quantitative",
+    "title":"Number of People", "legend":{"orient": "right"}},
+
+    "tooltip":[{"field":"Count","title":"Number of People", "format":","}],
+    "stroke":{"value":"ghostwhite"},
+    "strokeWidth":{"value":0.1}
+    },
+    "config":{"axisX":{"labelAngle":300}}
+    }

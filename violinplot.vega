@@ -1,0 +1,33 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "data":{"name":"df", "url":"https://raw.githubusercontent.com/Jonathan-Uni/Visualisation/main/gender_income_violin.csv"},
+    
+    "hconcat":[{
+    "title":"Male",
+    "height":300,
+    "width":400,
+    "transform": [{"filter":{"field": "Gender", "equal":"Male"}}],
+    "mark":{"type":"bar","smooth":true},
+    "encoding": {"x":{"field":"dense", "type": "quantitative", "stack":"center", "scale":{"padding":10},"axis":{"title":null, "tickColor":"white", "labelColor":"white"},"title":null},
+    "y":{"field":"income", "type":"quantitative", "bin":{"step":1},"title":"Median Weekly Income"},
+    "color":{"field":"Gender", "scale":{"range":["#1b9e77", "#7570b3"]}}
+    }
+    },
+    {
+    "title":"Female",
+    "height":300,
+    "width":400,
+    "layer":[{
+    "transform": [{"filter":{"field": "Gender", "equal":"Female"}}],
+    "mark":{"type":"bar","smooth":true},
+    "encoding": {"x":{"field":"dense", "type": "quantitative", "stack":"center", "scale":{"padding":10},"axis":{"title":null, "tickColor":"white", "labelColor":"white"},"title":null},
+    "y":{"field":"income", "type":"quantitative", "bin":{"step":1},"title":"Median Weekly Income" , "axis":null},
+    "color":{"field":"Gender",
+    "scale":{"range":["#1b9e77"]}}}},
+     {"mark":{"type": "text", "text":"Slightly higher density", "color":"grey", "dx":180, "dy":70}},
+     {"mark":{"type": "text", "text":"←", "color":"grey", "dx":140, "dy":80}}]}
+    ],
+    "config": {
+                    "view": {"stroke": null},
+                    "axis": {"grid": false}
+                    }}

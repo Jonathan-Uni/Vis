@@ -1,0 +1,58 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+
+    
+    "data": {
+    "url": "https://raw.githubusercontent.com/Jonathan-Uni/Visualisation/main/cleaned_gender_2.csv",
+    "format": {
+        "type": "csv"}
+},
+    "spacing": 0,
+    "hconcat": [
+    {
+    "width":300,
+    "height":400, 
+    "layer":[{
+  
+    "transform":[{"filter":{"field": "Gender", "equal":"Male"}}],
+    "title":"Male",
+    "mark": {"type": "bar"},
+    "encoding": {"x":{"field":"obs", "type": "quantitative", "title":"People",
+    "sort":"descending"},
+    "y":{"field":"Age", "type": "nominal", "sort":["> 85", "75-84","65-74","55-64","45-54","35-44",
+"25-35","20-24","15-19","5-14","0-4"], 
+    "axis":null},
+    "color":{"field":"Gender", "scale":{"range":["#1b9e77", "#7570b3"]},"legend":{"orient": "none", "legendY": 10, "legendX": 20}},
+    "tooltip":[{"field":"percentage", "type": "quantitative", "format":".2%", "title":"% of People"}]}},
+    {"mark":{"type":"text","text":"Men compose 49.34%", "dx": -35, "dy":110,
+    "fontsize":8,"color":"grey","opacity":0.5}},
+    {"mark":{"type":"text","text":"of the population", "dx": -48, "dy":120,
+    "fontsize":8,"color":"grey","opacity":0.5}}]
+}
+    ,
+    {"height":400,
+    "mark":"text", "encoding": {"y": {"field": "Age", "type": "nominal", "axis": null, "sort": ["> 85", "75-84","65-74","55-64","45-54","35-44",
+"25-35","20-24","15-19","5-14","0-4"]},
+    "text": {"field": "Age", "type": "nominal"}}},
+    {
+    "width":300,
+    "height":400,
+    "layer":[{
+    "transform":[{"filter":{"field": "Gender", "equal":"Female"}}],
+    "title":"Female",
+    "mark":"bar",
+    "encoding": {"x":{"field":"obs", "type": "quantitative", "title":"People"},
+    "y":{"field":"Age", "type": "nominal", "sort":["> 85", "75-84","65-74","55-64","45-54","35-44",
+"25-35","20-24","15-19","5-14","0-4"], "axis":null},
+    "color":{"field":"Gender", "scale":{"range":["#7570b3"]},"legend":{"orient": "none"}},
+    "tooltip":[{"title":"% of People", "field":"percentage", "type": "quantitative", "format":".2%"}]}
+},{"mark":{"type":"text","text":"Women compose 50.66%", "dx": 52, "dy":110,
+    "fontsize":8,"color":"grey","opacity":0.5}},
+    {"mark":{"type":"text","text":"of the population", "dx": 30, "dy":120,
+    "fontsize":8,"color":"grey","opacity":0.5}}]}
+],
+"config": {
+"view": {"stroke": null},
+"axis": {"grid": false}
+}
+}
